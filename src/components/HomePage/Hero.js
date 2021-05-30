@@ -1,10 +1,12 @@
 import React from "react";
 import "./Hero.css"
+import background from '../../img/bank-tree.jpeg'
 
 class Hero extends React.Component {
     render() {
         return (
-            <div className="hero">
+            <div className="hero"
+                 style={{ backgroundImage: {background} }}>
                 <section className="hero-content">
                     <h2 className="sr-only">Promoted Content</h2>
                     <p className="subtitle">No fees.</p>

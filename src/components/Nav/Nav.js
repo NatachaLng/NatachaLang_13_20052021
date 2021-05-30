@@ -1,5 +1,6 @@
 import React from "react";
 import "./Nav.css";
+import logo from '../../img/argentBankLogo.png'
 
 class Nav extends React.Component{
     render(){
@@ -8,7 +9,7 @@ class Nav extends React.Component{
             <a className="main-nav-logo" href="./index.html">
                 <img
                     className="main-nav-logo-image"
-                    src="./img/argentBankLogo.png"
+                    src={logo}
                     alt="Argent Bank Logo"
                 />
                 <h1 className="sr-only">Argent Bank</h1>

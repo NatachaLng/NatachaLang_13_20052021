@@ -1,12 +1,16 @@
 import React from "react";
 import "./Features.css"
+import chat from '../../img/icon-chat.png'
+import money from '../../img/icon-money.png'
+import security from '../../img/icon-security.png'
+
 
 class Features extends React.Component {
     render() {
         return (<section className="features">
             <h2 className="sr-only">Features</h2>
             <div className="feature-item">
-                <img src="./img/icon-chat.png" alt="Chat Icon" className="feature-icon"/>
+                <img src={chat} alt="Chat Icon" className="feature-icon"/>
                 <h3 className="feature-item-title">You are our #1 priority</h3>
                 <p>
                     Need to talk to a representative? You can get in touch through our
@@ -15,7 +19,7 @@ class Features extends React.Component {
             </div>
             <div className="feature-item">
                 <img
-                    src="./img/icon-money.png"
+                    src={money}
                     alt="Chat Icon"
                     className="feature-icon"
                 />
@@ -26,7 +30,7 @@ class Features extends React.Component {
             </div>
             <div className="feature-item">
                 <img
-                    src="./img/icon-security.png"
+                    src={security}
                     alt="Chat Icon"
                     className="feature-icon"
                 />

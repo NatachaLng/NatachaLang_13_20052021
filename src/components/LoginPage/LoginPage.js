@@ -22,7 +22,7 @@ class LoginPage extends React.Component{
                         >Remember me</label
                         >
                         </div>
-                        <a href="./user.html" className="sign-in-button">Sign In</a>
+                        <a href="./profile" className="sign-in-button">Sign In</a>
                     </form>
                 </section>
             </main>

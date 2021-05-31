@@ -5,7 +5,6 @@ import Accounts from "./Accounts";
 
 class ProfilePage extends React.Component{
     render() {
-        const { id, title, amount, description } = this.props
         return(
             <main className="main bg-dark">
                 <div className="header">

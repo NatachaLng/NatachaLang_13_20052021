@@ -1,6 +1,6 @@
 import React from "react";
 import "./Nav.css";
-import logo from '../../img/argentBankLogo.png'
+import logo from "../../img/argentBankLogo.png"
 
 class Nav extends React.Component{
     render(){

@@ -7,7 +7,7 @@ class Features extends React.Component {
         const { imgSrc, imgAlt, title, description } = this.props
         return (
             <div className="feature-item">
-                <img src={`../../img/${imgSrc}`} alt={imgAlt} className="feature-icon"/>
+                <img src={imgSrc} alt={imgAlt} className="feature-icon"/>
                 <h3 className="feature-item-title">{title}</h3>
                 <p>
                     {description}

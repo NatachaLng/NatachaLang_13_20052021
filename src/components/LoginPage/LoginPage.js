@@ -18,8 +18,7 @@ class LoginPage extends Component {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
+    };
     handleInputChange(event) {
         const target = event.target;
         const name = target.name;
@@ -28,25 +27,22 @@ class LoginPage extends Component {
             [name]: target.value,
         });
     }
-
     handleSubmit(event) {
         event.preventDefault();
         const { emailInput, passwordInput } = this.state;
-
         const user = {
             email: emailInput,
             password: passwordInput,
             token: "",
         };
-
         axios
             .post("http://localhost:3001/api/v1/user/login", user)
-            .then((res) => {
-                this.props.login(emailInput, passwordInput, res.data.body.token);
+            .then((response) => {
+                this.props.login(emailInput, passwordInput, response.data.body.token);
                 this.setState({ isAuth: true, hasError: false });
             })
-            .catch((err) => {
-                console.log(err);
+            .catch((error) => {
+                console.log(error);
                 this.setState({ hasError: true });
             });
     }
@@ -97,11 +93,11 @@ class LoginPage extends Component {
     }
 }
 
-const mstp = (state) => ({
+const mapStateToProps = (state) => ({
     user: state.user,
 });
 
-const mdtp = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         {
             login,
@@ -110,4 +106,4 @@ const mdtp = (dispatch) => {
     );
 };
 
-export default connect(mstp, mdtp)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

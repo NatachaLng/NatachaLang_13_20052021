@@ -27,8 +27,8 @@ class ProfilePage extends Component {
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             )
-            .then((res) => {
-                const { firstName, lastName } = res.data.body;
+            .then((response) => {
+                const { firstName, lastName } = response.data.body;
                 this.props.editProfile(firstName, lastName);
             })
             .catch((error) => {
@@ -45,8 +45,8 @@ class ProfilePage extends Component {
         });
     }
 
-    handleSubmit(evt) {
-        evt.preventDefault();
+    handleSubmit(event) {
+        event.preventDefault();
         const { firstnameInput, lastnameInput } = this.state;
         const token = this.props.user.token;
 
@@ -59,7 +59,7 @@ class ProfilePage extends Component {
             .put("http://localhost:3001/api/v1/user/profile", data, {
                 headers: { Authorization: `Bearer ${token}` },
             })
-            .then((res) => {
+            .then((response) => {
                 this.props.editProfile(firstnameInput, lastnameInput);
             })
             .catch((error) => console.log(error));

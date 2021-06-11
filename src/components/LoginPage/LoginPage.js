@@ -79,7 +79,6 @@ class LoginPage extends Component {
                                 this.state.hasError ? "sign-in-msg error" : "sign-in-msg"
                             }
                         >
-                            Incorrect username or password.
                         </div>
                         <div className="input-remember">
                             <input type="checkbox" id="remember-me" />

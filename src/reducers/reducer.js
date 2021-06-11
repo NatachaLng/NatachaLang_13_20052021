@@ -1,5 +1,5 @@
 import { IS_LOGGED_OUT } from "../constants/LogOut";
-import { LOGIN, LOGOUT, EDIT_PROFILE } from "../constants/UserConstant";
+import { LOGIN, LOGOUT} from "../constants/UserConstant";
 
 const user = (state = IS_LOGGED_OUT, action) => {
     switch (action.type) {

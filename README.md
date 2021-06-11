@@ -10,7 +10,7 @@ Creation of the frontend of a banking application with React and Redux. Datas we
     
 ## Getting Started
 ### Installation
-1. Clone this repository on your computer git clone https://github.com/NatachaLng/NatachaLang_P13_20052021.git
+1. Clone this repository on your computer git clone https://github.com/NatachaLng/NatachaLang_13_20052021.git
 2. Go to the project folder cd NatachaLang_P13_20052021
 3. Install all dependencies you need via the `npm i` command
 

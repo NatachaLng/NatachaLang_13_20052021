@@ -34,8 +34,12 @@ class Nav extends Component {
                 ) : (
                     <div className="main-nav-logout">
                         <div className='main-nav-item'>
+                            <Link
+                                className="main-nav-item"
+                                to="/profile">
                             <img src={user} width={"20px"} className={"nav-img"}/>
                             <span className="main-nav-name">{this.props.user.firstName}</span>
+                            </Link>
                         </div>
                         <div className='main-nav-item'>
                             <Link

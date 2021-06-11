@@ -28,9 +28,12 @@
     color: #42b983;
 }
 
-.main-nav-item {
+.main-nav-item,
+.main-nav-logout{
     text-decoration: none;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .main-nav-item:hover {
@@ -45,4 +48,7 @@
 .main-nav-logo-image {
     max-width: 100%;
     width: 200px;
+}
+.nav-img{
+    margin-right: 10px;
 }

@@ -1,5 +1,6 @@
 .account-content-wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border: 1px solid black;
@@ -45,6 +46,7 @@
     font-weight: bold;
     padding: 10px;
     margin: 10px;
+    margin-left: 20px;
 }
 
 .edit-button:hover{
@@ -72,6 +74,11 @@
 .transaction-button:hover{
     background-color: #fff;
     color: #6458f5;
+}
+
+.bg-dark{
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
 
 

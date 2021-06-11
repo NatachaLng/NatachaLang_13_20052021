@@ -1,4 +1,4 @@
-.account {
+.account-content-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,7 +6,7 @@
     background-color: #fff;
     width: 80%;
     margin: 0 auto;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1.5rem;
     box-sizing: border-box;
     text-align: left;
@@ -30,9 +30,12 @@
     font-weight: normal;
 }
 
-.account-content-wrapper {
-    width: 100%;
-    flex: 1;
+#firstname,
+#lastname{
+    border: 1px solid #c3cfd9;
+    color: #000;
+    height: 32px;
+    margin: 10px;
 }
 
 .edit-button {
@@ -41,10 +44,12 @@
     color: #6458f5;
     font-weight: bold;
     padding: 10px;
+    margin: 10px;
 }
 
 .edit-button:hover{
-    
+    background-color: #6458f5;
+    color: #fff;
 }
 
 .header {
@@ -59,10 +64,16 @@
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
+    border-color: #6458f5;
+    background-color: #6458f5;
     color: #fff;
 }
+
+.transaction-button:hover{
+    background-color: #fff;
+    color: #6458f5;
+}
+
 
 @media (min-width: 720px) {
     .account {

@@ -15,9 +15,12 @@ class LoginPage extends Component {
             passwordInput: "",
             isAuth: false,
             hasError: false,
+            rememberUser: false
         };
+        localStorage.removeItem("token");
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.rememberMe = this.rememberMe.bind(this);
     };
     handleInputChange(event) {
         const target = event.target;
@@ -39,12 +42,27 @@ class LoginPage extends Component {
             .post("http://localhost:3001/api/v1/user/login", user)
             .then((response) => {
                 this.props.login(emailInput, passwordInput, response.data.body.token);
+                console.log(this.state.rememberUser)
+                if(this.state.rememberUser) {localStorage.setItem("token",response.data.body.token)};
                 this.setState({ isAuth: true, hasError: false });
             })
             .catch((error) => {
                 console.log(error);
                 this.setState({ hasError: true });
             });
+    }
+
+    rememberMe (event) {
+        console.log(!this.state.rememberUser)
+        if (!event.checked) {
+            this.setState({
+                rememberUser: false
+            })
+        } else {
+            this.setState({
+                rememberUser: true
+            })
+        }
     }
 
     render() {
@@ -81,7 +99,7 @@ class LoginPage extends Component {
                         >
                         </div>
                         <div className="input-remember">
-                            <input type="checkbox" id="remember-me" />
+                            <input type="checkbox" id="remember-me" onChange={this.rememberMe} />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
                         <input type="submit" className="sign-in-button" value="Sign in" />

@@ -10,20 +10,19 @@ import Footer from "./components/Footer/Footer";
 
 class App extends Component {
   render() {
-    return (
-        <BrowserRouter>
-        <div className="app">
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/profile" component={ProfilePage} />
-          </Switch>
-          <Footer />
-        </div>
-        </BrowserRouter>
-    );
-  }
+          return (
+          <BrowserRouter>
+              <div className="app">
+                  <Nav />
+                  <Switch>
+                      <Route exact path="/" component={HomePage} />
+                      <Route path="/login" component={LoginPage} />
+                      <Route path="/profile" component={ProfilePage} />
+                  </Switch>
+                  <Footer />
+              </div>
+          </BrowserRouter>);
+      }
 }
 
 export default App;

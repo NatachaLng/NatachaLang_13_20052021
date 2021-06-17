@@ -4,6 +4,8 @@ import { accounts } from "../../assets/Data";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { editProfile } from "../../actions/actions";
+import { isEdit } from "../../actions/actions";
+import {store} from "../../store";
 import axios from "axios";
 import "./ProfilePage.css";
 import Accounts from "./Accounts";
@@ -14,13 +16,16 @@ class ProfilePage extends Component {
         this.state = {
             firstnameInput: "",
             lastnameInput: "",
+            isRedirect: false,
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCancel = this.handleCancel.bind(this)
     }
 
     componentDidMount() {
-        const token = this.props.user.token;
+        console.log("######", this.props.user.token);
+        const token = this.props.user.token !== "" ?  this.props.user.token : localStorage.getItem("token");
         axios
             .post(
                 "http://localhost:3001/api/v1/user/profile",
@@ -30,6 +35,7 @@ class ProfilePage extends Component {
             .then((response) => {
                 const { firstName, lastName } = response.data.body;
                 this.props.editProfile(firstName, lastName);
+                console.log(".....", firstName, lastName)
             })
             .catch((error) => {
                 console.error(error);
@@ -65,17 +71,24 @@ class ProfilePage extends Component {
             .catch((error) => console.log(error));
     }
 
-    render() {
-        const { firstName, lastName, logStatus } = this.props.user;
+    handleCancel() {
+        this.setState({isRedirect: true})
+        this.props.isEdit(false, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
+    }
 
-        if (!logStatus) return <Redirect to="/login" />;
+    render() {
+        const { firstName, lastName, logStatus} = this.props.user;
+        console.log("token", localStorage.getItem('token'))
+        if (!logStatus){
+            if (localStorage.getItem("token") === null) return <Redirect to="/login" />;
+        }
 
         return (
             <main className="main bg-dark">
                 <header className="header">
                     <h2>
                         Welcome back<br/>
-                        <span className="header-name">{`${firstName} ${lastName}!`}</span>
+                        <span className="header-name">{`${firstName}!`}</span>
                     </h2>
                     <form onSubmit={this.handleSubmit}>
                         <div className="header-form-group">

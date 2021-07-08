@@ -4,8 +4,6 @@ import { accounts } from "../../assets/Data";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { editProfile } from "../../actions/actions";
-import { isEdit } from "../../actions/actions";
-import {store} from "../../store";
 import axios from "axios";
 import "./ProfilePage.css";
 import Accounts from "./Accounts";
@@ -34,6 +32,10 @@ class ProfilePage extends Component {
             )
             .then((response) => {
                 const { firstName, lastName } = response.data.body;
+                this.setState({
+                    firstnameInput :  this.props.user.firstName,
+                    lastnameInput :  this.props.user.lastName
+                })
                 this.props.editProfile(firstName, lastName);
                 console.log(".....", firstName, lastName)
             })
@@ -54,6 +56,7 @@ class ProfilePage extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { firstnameInput, lastnameInput } = this.state;
+        if(firstnameInput==="" || lastnameInput === "") return;
         const token = this.props.user.token;
 
         const data = {
@@ -72,8 +75,20 @@ class ProfilePage extends Component {
     }
 
     handleCancel() {
-        this.setState({isRedirect: true})
-        this.props.isEdit(false, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
+        //const firtsName = this.props.user.firstName
+        //const lastName = this.props.user.lastName
+        //const firstNameInput = document.getElementById("firstname");
+        //const lastNameInput = document.getElementById("lastname");
+    console.log("___________________")
+        this.setState({
+            firstnameInput :  "",
+            lastnameInput :  ""
+        })
+
+        //firstNameInput.value = '';
+        //lastNameInput.value = '';
+
+
     }
 
     render() {
@@ -101,6 +116,7 @@ class ProfilePage extends Component {
                                 placeholder={firstName}
                                 name="firstnameInput"
                                 onChange={this.handleInputChange}
+                                value={this.state.firstnameInput}
                             />
                             <label className="sr-only" htmlFor="lastname">
                                 Lastname
@@ -111,11 +127,12 @@ class ProfilePage extends Component {
                                 placeholder={lastName}
                                 name="lastnameInput"
                                 onChange={this.handleInputChange}
+                                value={this.state.lastnameInput}
                             />
                         </div>
                         <div className="header-form-group">
                             <input className="edit-button" type="submit" value="Save" />
-                            <input className="edit-button" type="button" value="Cancel" />
+                            <input className="edit-button" type="button" value="Cancel" onClick={this.handleCancel}/>
                         </div>
                     </form>
                 </header>
